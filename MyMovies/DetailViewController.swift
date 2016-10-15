@@ -76,48 +76,31 @@ class DetailViewController: UIViewController {
                     
                     // smallImageResponse will be nil if the smallImage is already available
                     // in cache (might want to do something smarter in that case).
-                    // imageResponse will be nil if the image is cached
-                    if smallImageResponse != nil {
-                        self.posterView.alpha = 0.0
-                        self.posterView.image = smallImage;
+                    
+                    self.posterView.alpha = 0.0
+                    self.posterView.image = smallImage;
+                    
+                    UIView.animate(withDuration: 0.3, animations: { () -> Void in
                         
-                        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                        self.posterView.alpha = 1.0
+                        
+                        }, completion: { (sucess) -> Void in
                             
-                            self.posterView.alpha = 1.0
-                            
-                            }, completion: { (sucess) -> Void in
-                                
-                                // The AFNetworking ImageView Category only allows one request to be sent at a time
-                                // per ImageView. This code must be in the completion block.
-                                self.posterView.setImageWith(
-                                    largeImageRequest as URLRequest,
-                                    placeholderImage: smallImage,
-                                    success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
-                                        
-                                        self.posterView.image = largeImage;
-                                        
-                                    },
-                                    failure: { (request, response, error) -> Void in
-                                        // do something for the failure condition of the large image request
-                                        // possibly setting the ImageView's image to a default image
-                                })
-                        })
-                    }else{
-                        
-                        self.posterView.setImageWith(
-                            largeImageRequest as URLRequest,
-                            placeholderImage: smallImage,
-                            success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
-                                
-                                self.posterView.image = largeImage;
-                                
-                            },
-                            failure: { (request, response, error) -> Void in
-                                // do something for the failure condition of the large image request
-                                // possibly setting the ImageView's image to a default image
-                        })
-                        
-                    }
+                            // The AFNetworking ImageView Category only allows one request to be sent at a time
+                            // per ImageView. This code must be in the completion block.
+                            self.posterView.setImageWith(
+                                largeImageRequest as URLRequest,
+                                placeholderImage: smallImage,
+                                success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
+                                    
+                                    self.posterView.image = largeImage;
+                                    
+                                },
+                                failure: { (request, response, error) -> Void in
+                                    // do something for the failure condition of the large image request
+                                    // possibly setting the ImageView's image to a default image
+                            })
+                    })
                 },
                 failure: { (request, response, error) -> Void in
                     // do something for the failure condition
