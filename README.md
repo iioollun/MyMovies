@@ -24,6 +24,10 @@ The following **optional** features are implemented:
 - [x] Customize the highlight and selection effect of the cell (I used storyboard).
 - [x] Customize the navigation bar (I used storyboard).
 
+The following **additional** features are implemented:
+
+- [x] Remove separator line if UITableViewCells are empty
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
