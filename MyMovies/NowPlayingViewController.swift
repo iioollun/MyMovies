@@ -25,6 +25,10 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Remove separator line if UITableViewCells are empty
+        TableView.tableFooterView = UIView()
+        
+        // create search
         createSearchBar()
 
         // Do any additional setup after loading the view.

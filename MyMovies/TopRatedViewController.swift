@@ -25,6 +25,10 @@ class TopRatedViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Remove separator line if UITableViewCells are empty
+        TableView.tableFooterView = UIView()
+        
+        // create search
         createSearchBar()
 
         // Do any additional setup after loading the view.
@@ -233,7 +237,6 @@ class TopRatedViewController: UIViewController, UITableViewDataSource, UITableVi
                     return false
                 }
             })
-            
             TableView.reloadData()
         }
     }

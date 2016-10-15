@@ -132,12 +132,12 @@ class DetailViewController: UIViewController {
     }
     
     func resizeScrollView(){
-        
+        titleLabel.sizeToFit()
         overviewLabel.sizeToFit()
         
         let groupViewHeigth = groupView.bounds.height
         
-        let groupViewNewHeight = titleLabel.bounds.height + overviewLabel.bounds.height + dateLabel.bounds.height + popularLabel.bounds.height + 55
+        let groupViewNewHeight = titleLabel.bounds.height + overviewLabel.bounds.height + dateLabel.bounds.height + popularLabel.bounds.height + 70
         
         groupView.frame.size.height = groupViewNewHeight
         
